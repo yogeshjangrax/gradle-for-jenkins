@@ -4,3 +4,22 @@ task runWithJavaExec(type: JavaExec) {
 	classpath = sourceSets.main.runtimeClasspath
 	main = "com.acme.able.Test"
 }
+
+buildscript {
+dependencies {
+classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
+}
+repositories {
+maven {
+url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+}
+}
+}
+
+apply plugin: "org.sonarqube"
+repositories {
+mavenLocal()
+maven {
+url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+}
+}
